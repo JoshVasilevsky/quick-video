@@ -1,0 +1,27 @@
+
+.page-center{
+    width:60%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+
+.transparent{
+    background-color: transparent;
+}
+
+.toolbar-title{
+    font-size: 22.5px;
+    font-weight: bold;
+}
+
+.landing-text{
+    color:white;
+    font-size: 60px; 
+    text-align: center;
+    line-height: 70px;
+    font-weight: bold;
+    padding:20px
+}

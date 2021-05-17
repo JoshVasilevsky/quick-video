@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LandingModule } from './modules/landing/landing.module';
+import { AppDisplayModule } from './modules/app-display/app-display.module';
 import { RoomDisplayModule } from './modules/room-display/room-display.module';
 
 @NgModule({
@@ -12,7 +12,7 @@ import { RoomDisplayModule } from './modules/room-display/room-display.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    LandingModule,
+    AppDisplayModule,
     RoomDisplayModule
   ],
   declarations: [
