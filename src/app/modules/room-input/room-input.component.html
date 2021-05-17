@@ -1,0 +1,32 @@
+<div class='flex-column'>
+  <mat-form-field class="input-box" appearance="outline">
+    <mat-label>Room ID</mat-label>
+    <input matInput type="text" [value]="roomId" placeholder="Ex. 1234" (keyup)="updateRoomURL($event)">
+    <span matSuffix>
+      <mat-icon>meeting_room</mat-icon>
+    </span>
+  </mat-form-field>
+  <mat-form-field class="input-box" appearance="outline">
+    <mat-label>Username</mat-label>
+    <input matInput type="text" placeholder="Ex. John Smith">
+    <span matSuffix>
+      <mat-icon class="align-icon">account_circle</mat-icon>
+    </span>
+  </mat-form-field>
+  <div class="flex-row align-list">
+    <div class="flex-column">
+      <mat-label>Choose Media</mat-label>
+      <div>
+        <mat-slide-toggle color="primary" class="microphone-toggle" [(ngModel)]="isAudioChecked">
+          <mat-icon class="align-toggle-icon" [innerHTML]="isAudioChecked?'mic':'mic_off'"></mat-icon>
+        </mat-slide-toggle>
+        <mat-slide-toggle color="primary" class="camera-toggle" [(ngModel)]="isVideoChecked">
+            <mat-icon class="align-toggle-icon" [innerHTML]="isVideoChecked?'videocam':'videocam_off'"></mat-icon>
+        </mat-slide-toggle>
+      </div>
+    </div>
+    <button mat-flat-button color="primary" class="join-button">Join</button>
+  </div>
+ 
+</div>
+

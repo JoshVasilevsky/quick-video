@@ -1,10 +1,11 @@
 import { NgModule } from "@angular/core";
 import { CreateRoomComponent } from "./create-room.component";
-import {MatCardModule } from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RoomInputModule } from "../room-input/room-input.module";
 
 @NgModule({
-    imports: [MatCardModule, MatButtonModule],
+    imports: [MatCardModule, RoomInputModule, MatToolbarModule],
     declarations:[CreateRoomComponent],
     exports: [CreateRoomComponent]
   })
