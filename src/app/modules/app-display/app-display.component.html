@@ -1,8 +1,4 @@
 <div class='full-width'>
-    <ng-template *ngIf="isInCall;else roomDisplay" >
-        <room-display></room-display>
-    </ng-template>
-    <ng-template #roomDisplay>
-        <landing-display></landing-display>
-    </ng-template>
+        <landing-display *ngIf="!isInCall"></landing-display>
+        <room-display *ngIf="isInCall"></room-display>
 </div>

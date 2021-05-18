@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RoomJoinSettings } from 'src/app/models/roomJoinSettings.model';
+import { EventEmitterService } from '../../services/event-emitter/event-emitter.service';
 
 @Component({
   selector: 'app-display',
@@ -7,8 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppDisplayComponent implements OnInit {
   isInCall: boolean = false;
-  roomId: string;
+  roomJoinSettings : RoomJoinSettings;
   
-  ngOnInit(): void {}
+  constructor(private eventEmitterService: EventEmitterService) {}
 
+
+  ngOnInit(): void {
+    this.subscribeToJoinRoomUpdate();
+  }
+
+  subscribeToJoinRoomUpdate(){
+    this.eventEmitterService.getJoinRoomEvent().subscribe((roomJoinSettings : RoomJoinSettings)=>{
+      this.isInCall = true;
+      this.roomJoinSettings = roomJoinSettings;
+      console.log(JSON.stringify(roomJoinSettings))
+    })
+  }
 }
