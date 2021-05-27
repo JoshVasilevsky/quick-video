@@ -1,4 +1,4 @@
 <div class='full-width'>
-        <landing-display *ngIf="!isInCall"></landing-display>
-        <room-display *ngIf="isInCall"></room-display>
+        <landing-display *ngIf="!isInCall" [roomSettings]="roomSettings"></landing-display>
+        <room-display *ngIf="isInCall" [roomSettings]="roomSettings"></room-display>
 </div>

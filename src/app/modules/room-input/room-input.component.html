@@ -3,14 +3,14 @@
     <div class='flex-column'>
       <mat-form-field class="input-box" appearance="fill">
         <mat-label>Room ID</mat-label>
-        <input matInput type="text" [value]="roomId" placeholder="Ex. 1234" (keyup)="updateRoomURL($event)" onfocus="this.select()">
+        <input matInput type="text" [value]="roomSettings.roomId" placeholder="Ex. 1234" (keyup)="updateRoomURL($event)" onfocus="this.select()">
         <span matSuffix>
           <mat-icon>meeting_room</mat-icon>
         </span>
       </mat-form-field>
       <mat-form-field class="input-box" appearance="fill">
         <mat-label>Username</mat-label>
-        <input matInput [(ngModel)]="username" type="text" placeholder="Ex. John Smith" onfocus="this.select()">
+        <input matInput [(ngModel)]="roomSettings.username" type="text" placeholder="Ex. John Smith" onfocus="this.select()">
         <span matSuffix>
           <mat-icon class="align-icon">account_circle</mat-icon>
         </span>
@@ -19,15 +19,15 @@
         <div class="flex-column">
           <mat-label>Choose Media</mat-label>
           <div>
-            <mat-slide-toggle color="primary" class="microphone-toggle" [(ngModel)]="isAudioChecked">
-              <mat-icon class="align-toggle-icon" [innerHTML]="isAudioChecked?'mic':'mic_off'"></mat-icon>
+            <mat-slide-toggle color="primary" class="microphone-toggle" [(ngModel)]="roomSettings.isAudioEnabled">
+              <mat-icon class="align-toggle-icon" [innerHTML]="roomSettings.isAudioEnabled?'mic':'mic_off'"></mat-icon>
             </mat-slide-toggle>
-            <mat-slide-toggle color="primary" class="camera-toggle" [(ngModel)]="isVideoChecked">
-                <mat-icon class="align-toggle-icon" [innerHTML]="isVideoChecked?'videocam':'videocam_off'"></mat-icon>
+            <mat-slide-toggle color="primary" class="camera-toggle" [(ngModel)]="roomSettings.isVideoEnabled">
+                <mat-icon class="align-toggle-icon" [innerHTML]="roomSettings.isVideoEnabled?'videocam':'videocam_off'"></mat-icon>
             </mat-slide-toggle>
           </div>
         </div>
-        <button mat-flat-button color="primary" class="join-button" (click)="joinRoom()">Join</button>
+        <button mat-flat-button color="primary" class="join-button" (click)="joinRoom()"> <b>Join</b></button>
       </div>
     </div>    
   </mat-card-content>

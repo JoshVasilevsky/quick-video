@@ -1,18 +1,56 @@
 import { Injectable, EventEmitter } from "@angular/core";
 import { Observable } from "rxjs";
-import { RoomJoinSettings } from "../../models/roomJoinSettings.model";
+import { RoomSettings } from "../../models/room-settings.model";
 
 
 @Injectable({providedIn: 'root'})
 export class EventEmitterService {
-    joinRoomEvent = new EventEmitter();
 
-    emitJoinRoomEvent(roomJoinSettings: RoomJoinSettings):void{
-        this.joinRoomEvent.emit(roomJoinSettings);
+    joinLeaveRoomEvent = new EventEmitter();
+    toggleChatEvent = new EventEmitter();
+    toggleMicEvent = new EventEmitter();
+    toggleCameraEvent = new EventEmitter();
+    toggleShareScreenEvent = new EventEmitter();
+
+
+    emitJoinLeaveRoomEvent(roomJoinSettings: RoomSettings):void{
+        this.joinLeaveRoomEvent.emit(roomJoinSettings);
     }
 
-    getJoinRoomEvent(): Observable<RoomJoinSettings>{
-        return this.joinRoomEvent.asObservable();
+    getJoinLeaveRoomEvent(): Observable<RoomSettings>{
+        return this.joinLeaveRoomEvent.asObservable();
+    }
+
+    emitToggleChatEvent(isChatOpen: boolean):void{
+        this.toggleChatEvent.emit(isChatOpen);
+    }
+
+    getToggleChatEvent(): Observable<boolean>{
+        return this.toggleChatEvent.asObservable();
+    }
+
+    emitToggleMicEvent(isAudioEnabled: boolean):void{
+        this.toggleMicEvent.emit(isAudioEnabled);
+    }
+
+    getToggleMicEvent(): Observable<boolean>{
+        return this.toggleMicEvent.asObservable();
+    }
+
+    emitToggleCameraEvent(isCameraEnabled: boolean):void{
+        this.toggleCameraEvent.emit(isCameraEnabled);
+    }
+
+    getToggleCameraEvent(): Observable<boolean>{
+        return this.toggleCameraEvent.asObservable();
+    }
+
+    emitToggleShareScreenEvent(isSharingScreen: boolean):void{
+        this.toggleShareScreenEvent.emit(isSharingScreen);
+    }
+
+    getToggleShareScreenEvent(): Observable<boolean>{
+        return this.toggleShareScreenEvent.asObservable();
     }
 
 }

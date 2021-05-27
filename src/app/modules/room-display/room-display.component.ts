@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { RoomSettings } from 'src/app/models/room-settings.model';
 
 @Component({
   selector: 'room-display',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoomDisplayComponent implements OnInit {
 
+  @Input() roomSettings: RoomSettings;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 }
+
+

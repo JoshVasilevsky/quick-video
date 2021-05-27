@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RoomJoinSettings } from 'src/app/models/roomJoinSettings.model';
+import { ActivatedRoute } from '@angular/router';
+import { RoomSettings } from 'src/app/models/room-settings.model';
 import { EventEmitterService } from '../../services/event-emitter/event-emitter.service';
 
 @Component({
@@ -9,20 +10,22 @@ import { EventEmitterService } from '../../services/event-emitter/event-emitter.
 })
 export class AppDisplayComponent implements OnInit {
   isInCall: boolean = false;
-  roomJoinSettings : RoomJoinSettings;
+  roomSettings : RoomSettings = new RoomSettings();
   
-  constructor(private eventEmitterService: EventEmitterService) {}
-
+  constructor(private eventEmitterService: EventEmitterService, private route: ActivatedRoute) {
+    this.route.params.subscribe( params => this.roomSettings.roomId = params.id );
+  }
 
   ngOnInit(): void {
-    this.subscribeToJoinRoomUpdate();
+    this.subscribeToJoinLeaveRoomUpdate();
   }
 
-  subscribeToJoinRoomUpdate(){
-    this.eventEmitterService.getJoinRoomEvent().subscribe((roomJoinSettings : RoomJoinSettings)=>{
-      this.isInCall = true;
-      this.roomJoinSettings = roomJoinSettings;
-      console.log(JSON.stringify(roomJoinSettings))
+  subscribeToJoinLeaveRoomUpdate(){
+    this.eventEmitterService.getJoinLeaveRoomEvent().subscribe((roomSettings : RoomSettings)=>{
+      this.isInCall = !this.isInCall;
+      this.roomSettings = roomSettings;
     })
   }
+
+
 }

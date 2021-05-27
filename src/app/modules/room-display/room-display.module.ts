@@ -1,8 +1,9 @@
 import { NgModule } from "@angular/core";
 import { RoomDisplayComponent } from "./room-display.component";
+import { CallToolbarModule } from "../call-toolbar/call-toolbar.module";
 
 @NgModule({
-    imports: [],
+    imports: [CallToolbarModule],
     declarations:[RoomDisplayComponent],
     exports: [RoomDisplayComponent]
   })
