@@ -1,0 +1,20 @@
+<div class="full-width background">
+   <call-toolbar [roomSettings]="roomSettings"></call-toolbar>
+   <div class="full-width" style="display: flex; flex-direction:row; height: 100%;">
+      <div style="width: 82.5%; height: 100%;">  
+         <video autoPlay #userVideo></video>
+         <video autoPlay #userVideoDisplay></video>
+         <div >
+            <div *ngFor="let video of videos">
+               <video autoplay
+               [id]="video.videoId"
+               [srcObject]="video.srcObject"
+               [muted]="video.muted"
+             >
+             </video>
+            </div>
+        </div>
+      </div>
+      <div *ngIf="roomSettings.isChatOpen" style="background-color:#212121;; width: 17.5%; height: 100%;">sidebar</div>
+   </div>
+</div>

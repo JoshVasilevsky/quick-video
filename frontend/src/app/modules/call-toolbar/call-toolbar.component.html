@@ -1,0 +1,23 @@
+<div>
+    <mat-toolbar>
+      <timer></timer>
+       <span class="spacer"></span>
+       <button mat-icon-button class="margin icon-button" (click)="toggleChat()" [class.button-toggle]="roomSettings.isChatOpen">
+        <mat-icon>comment</mat-icon>
+      </button>
+      <div class="divider"></div>
+      <button mat-icon-button class="margin icon-button" (click)="toggleCamera()">
+        <mat-icon class="align-toggle-icon" [innerHTML]="roomSettings.isVideoEnabled?'videocam':'videocam_off'"></mat-icon>
+      </button>
+      <button mat-icon-button class="margin icon-button" (click)="toggleMic()">
+        <mat-icon [innerHTML]="roomSettings.isAudioEnabled?'mic':'mic_off'"></mat-icon>
+       </button>
+      <button mat-icon-button class="margin icon-button" (click)="toggleShareScreen()">
+        <mat-icon [innerHTML]="roomSettings.isSharingScreen?'stop_screen_share':'screen_share'"></mat-icon>
+      </button>
+      <button mat-flat-button color="primary" class="leave-button" (click)="leaveCall()">
+        <mat-icon class="button-spacing">call_end</mat-icon>
+        <b>Leave</b></button>
+     </mat-toolbar>
+     
+</div>
