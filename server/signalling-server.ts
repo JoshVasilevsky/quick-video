@@ -2,7 +2,6 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
-import { Peer } from '../frontend/src/app/models/peer.model';
 import { SignallingMessage } from '../frontend/src/app/models/signallingMessage.model';
 
 io.on('connection', (socket: any) => {
