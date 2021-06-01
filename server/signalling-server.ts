@@ -15,7 +15,7 @@ io.on('connection', (socket: any) => {
     });
 
     socket.on('answer_signal',  (signallingMessage : SignallingMessage) => {
-        io.to(signallingMessage.callerId).emit('answer', { signalData: signallingMessage.signalData, calleeId: socket.id });
+        io.to(signallingMessage.callerId).emit('answer', signallingMessage);
     });
 
     socket.on('disconnect', () => {

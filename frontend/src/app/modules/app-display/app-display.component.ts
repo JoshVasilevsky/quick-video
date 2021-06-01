@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RoomSettings } from 'src/app/models/room-settings.model';
+import { RoomSettings } from '../../../app/models/room-settings.model';
 import { EventEmitterService } from '../../services/event-emitter/event-emitter.service';
 
 @Component({

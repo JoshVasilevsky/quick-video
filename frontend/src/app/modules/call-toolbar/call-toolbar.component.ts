@@ -1,5 +1,5 @@
 import { Component, Input} from '@angular/core';
-import { RoomSettings } from 'src/app/models/room-settings.model';
+import { RoomSettings } from '../../../app/models/room-settings.model';
 import { EventEmitterService } from '../../../app/services/event-emitter/event-emitter.service';
 
 @Component({

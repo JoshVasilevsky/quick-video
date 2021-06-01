@@ -1,20 +1,17 @@
 <div class="full-width background">
    <call-toolbar [roomSettings]="roomSettings"></call-toolbar>
-   <div class="full-width" style="display: flex; flex-direction:row; height: 100%;">
-      <div style="width: 82.5%; height: 100%;">  
-         <video autoPlay #userVideo></video>
-         <video autoPlay #userVideoDisplay></video>
-         <div >
-            <div *ngFor="let video of videos">
-               <video autoplay
-               [id]="video.videoId"
-               [srcObject]="video.srcObject"
-               [muted]="video.muted"
-             >
-             </video>
+   <div class="full-width room-content" >
+      <div class="videoViewDiv">
+         <div *ngFor="let video of videos">
+            <div class="videoContainer"> 
+               <video autoplay [id]="video.videoId" [srcObject]="video.srcObject" [muted]="video.muted" > </video>
+               <label [innerHTML]="video.username" class="videoLabel"></label>
             </div>
-        </div>
+         </div>
       </div>
-      <div *ngIf="roomSettings.isChatOpen" style="background-color:#212121;; width: 17.5%; height: 100%;">sidebar</div>
+      <div *ngIf="roomSettings.isChatOpen" class="sidebar">
+         sidebar
+         <button mat-flat-button color="primary" (click)="sendMessage()">send</button>
+      </div>
    </div>
 </div>

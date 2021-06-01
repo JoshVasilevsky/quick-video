@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {io, Socket } from 'socket.io-client';
+import io, { Socket } from 'socket.io-client';
 import { Peer } from '../../models/peer.model';
 import { SignallingMessage } from '../../models/signallingMessage.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SignalingService {
+export class SignallingService {
 
   private socket: Socket;
 
@@ -42,7 +42,7 @@ export class SignalingService {
     this.socket.emit('answer_signal', message);
   }
 
-  onAnswer(fn: (msg: SignallingMessage) => void) {
+  onAnswer(fn: (messsage: SignallingMessage) => void) {
     this.socket.on('answer', fn)
   }
 

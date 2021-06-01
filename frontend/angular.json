@@ -17,6 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "simple-peer",
+              "socket.io-client"
+            ],
             "outputPath": "dist/ng-video-app",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -56,7 +60,7 @@
             },
             "development": {
               "buildOptimizer": false,
-              "optimization": false,
+              "optimization": true,
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,

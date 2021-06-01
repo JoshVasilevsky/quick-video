@@ -1,7 +1,7 @@
-import SimplePeer from 'simple-peer';
+import Peer from "simple-peer";
 
 export interface Peer {
     peerId: string,
     username: string,
-    peer?: SimplePeer.Instance
+    peer?: Peer.Instance
 }

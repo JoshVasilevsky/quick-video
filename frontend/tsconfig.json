@@ -21,7 +21,10 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "simple-peer": [ "./node_modules/simple-peer/simplepeer.min.js" ],
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

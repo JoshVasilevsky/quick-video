@@ -1,5 +1,5 @@
 import { Component, Input} from '@angular/core';
-import { RoomSettings } from 'src/app/models/room-settings.model';
+import { RoomSettings } from '../../../app/models/room-settings.model';
 
 @Component({
   selector: 'landing-display',
