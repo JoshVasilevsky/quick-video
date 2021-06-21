@@ -158,6 +158,7 @@ export class RoomDisplayComponent implements OnInit {
   subscribeToDisconnectEventUpdate(){
     this.eventEmitterService.getDisconnectEvent().subscribe(()=>{
       this.signalingService.leaveRoom();
+      //this.roomSettings.isSharingScreen = false;
       this.roomSettings.isChatOpen = false;
       this.roomSettings.isInCall = false;
       this.eventEmitterService.emitJoinLeaveRoomEvent(this.roomSettings)

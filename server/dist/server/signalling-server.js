@@ -16,12 +16,13 @@ io.on('connection', function (socket) {
     socket.on('answer_signal', function (signallingMessage) {
         io.to(signallingMessage.callerId).emit('answer', signallingMessage);
     });
-    socket.on('disconnect', function () {
-        io.emit('room_left', socket.id);
-        socket.disconnect();
+    socket.on('disconnecting', function () {
+        var rooms = socket.rooms;
+        rooms.forEach(function (roomId) {
+            io.to(roomId).emit('room_left', socket.id);
+        });
     });
     socket.on('leave_room', function () {
-        io.emit('room_left', socket.id);
         socket.disconnect();
     });
 });
