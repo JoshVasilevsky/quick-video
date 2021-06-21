@@ -1,17 +1,16 @@
 <div class="full-width background">
-   <call-toolbar [roomSettings]="roomSettings"></call-toolbar>
+   <call-toolbar [roomSettings]="roomSettings" [unreadMessages]="unreadMessages"></call-toolbar>
    <div class="full-width room-content" >
-      <div class="videoViewDiv">
-         <div *ngFor="let video of videos">
+      <div [class.full-width]="!roomSettings.isChatOpen" [class.not-full-width]="roomSettings.isChatOpen"class="videoView">
+         <ng-container *ngFor="let video of videos">
             <div class="videoContainer"> 
                <video autoplay [id]="video.videoId" [srcObject]="video.srcObject" [muted]="video.muted" > </video>
                <label [innerHTML]="video.username" class="videoLabel"></label>
             </div>
-         </div>
+         </ng-container>
       </div>
       <div *ngIf="roomSettings.isChatOpen" class="sidebar">
-         sidebar
-         <button mat-flat-button color="primary" (click)="sendMessage()">send</button>
+        <chat-container [messages]="messages" [currentUser]="currentUser"></chat-container>
       </div>
    </div>
 </div>

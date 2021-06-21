@@ -1,0 +1,26 @@
+.align-chat-container{
+    width: 85%;
+    margin-right: 7.5%;
+    margin-left: 7.5%;
+}
+
+.messages-box{
+    max-height: 600px;
+    margin-bottom: 15px;
+    overflow: auto;
+}
+
+.align-title{
+    color:white;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.icon-button:hover{
+    color: #e91e63
+  }
+
+.spacer {
+    flex: 1 1 auto;
+  }

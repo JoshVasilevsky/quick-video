@@ -1,0 +1,15 @@
+<div class="align-chat-container">
+    <div class="align-title">
+        <h1>Messages</h1>
+        <span class="spacer"></span>
+        <button mat-icon-button class="icon-button" (click)="closeChat()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class=messages-box>  
+        <ng-container *ngFor="let message of messages">
+            <message-container [message]="message" [currentUser]="currentUser"></message-container>
+        </ng-container>
+    </div>
+   <chat-input [currentUser]="currentUser"></chat-input>
+</div>

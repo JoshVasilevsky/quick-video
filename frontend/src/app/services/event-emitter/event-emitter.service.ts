@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter } from "@angular/core";
 import { Observable } from "rxjs";
+import { Message } from "../../models/message.model";
 import { RoomSettings } from "../../models/room-settings.model";
 
 
@@ -7,10 +8,12 @@ import { RoomSettings } from "../../models/room-settings.model";
 export class EventEmitterService {
 
     joinLeaveRoomEvent = new EventEmitter();
+    disconnectEvent = new EventEmitter();
     toggleChatEvent = new EventEmitter();
     toggleMicEvent = new EventEmitter();
     toggleCameraEvent = new EventEmitter();
     toggleShareScreenEvent = new EventEmitter();
+    sendMessageEvent = new EventEmitter();
 
 
     emitJoinLeaveRoomEvent(roomJoinSettings: RoomSettings):void{
@@ -19,6 +22,14 @@ export class EventEmitterService {
 
     getJoinLeaveRoomEvent(): Observable<RoomSettings>{
         return this.joinLeaveRoomEvent.asObservable();
+    }
+    
+    emitDisconnectEvent():void{
+        this.disconnectEvent.emit();
+    }
+
+    getDisconnectEvent(): Observable<void>{
+        return this.disconnectEvent.asObservable();
     }
 
     emitToggleChatEvent(isChatOpen: boolean):void{
@@ -51,6 +62,14 @@ export class EventEmitterService {
 
     getToggleShareScreenEvent(): Observable<boolean>{
         return this.toggleShareScreenEvent.asObservable();
+    }
+
+    emitSendMessageEvent(message: Message):void{
+        this.sendMessageEvent.emit(message);
+    }
+
+    getSendMessageEvent(): Observable<Message>{
+        return this.sendMessageEvent.asObservable();
     }
 
 }

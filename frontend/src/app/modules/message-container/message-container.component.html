@@ -1,0 +1,11 @@
+<div [class.align-right]="isMessageFromCurrentUser" [class.align-left]="!isMessageFromCurrentUser">
+    <div [class.mat-magenta-background]="!isMessageFromCurrentUser" [class.user-background]="isMessageFromCurrentUser" class="bubble ">
+        <span>  
+            <small class="name">{{message.user.username}}</small> 
+            <small class="date">{{message.time.toLocaleDateString('en-US') + " " + message.time.toLocaleTimeString('en-US')}}</small>
+        </span>
+        <p>{{message.text}}</p>
+       
+    </div>
+</div>
+    

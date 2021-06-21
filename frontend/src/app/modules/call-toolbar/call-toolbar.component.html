@@ -3,7 +3,7 @@
       <timer></timer>
        <span class="spacer"></span>
        <button mat-icon-button class="margin icon-button" (click)="toggleChat()" [class.button-toggle]="roomSettings.isChatOpen">
-        <mat-icon>comment</mat-icon>
+        <mat-icon [matBadge]="unreadMessages" matBadgeColor="warn" [matBadgeHidden]="unreadMessages===0">comment</mat-icon>
       </button>
       <div class="divider"></div>
       <button mat-icon-button class="margin icon-button" (click)="toggleCamera()">
@@ -12,7 +12,7 @@
       <button mat-icon-button class="margin icon-button" (click)="toggleMic()">
         <mat-icon [innerHTML]="roomSettings.isAudioEnabled?'mic':'mic_off'"></mat-icon>
        </button>
-      <button mat-icon-button class="margin icon-button" (click)="toggleShareScreen()">
+      <button mat-icon-button class="margin icon-button" (click)="toggleShareScreen()" disabled>
         <mat-icon [innerHTML]="roomSettings.isSharingScreen?'stop_screen_share':'screen_share'"></mat-icon>
       </button>
       <button mat-flat-button color="primary" class="leave-button" (click)="leaveCall()">

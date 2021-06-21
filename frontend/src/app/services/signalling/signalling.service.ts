@@ -49,4 +49,9 @@ export class SignallingService {
   onRoomLeft(fn: (socketId: string) => void) {
     this.socket.on('room_left', fn);
   }
+
+  leaveRoom(){
+    this.socket.emit('leave_room');
+  }
+
 }

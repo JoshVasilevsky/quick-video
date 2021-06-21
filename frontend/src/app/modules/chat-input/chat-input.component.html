@@ -1,0 +1,10 @@
+<div>
+    <mat-form-field class="align-input text-color" appearance="fill">
+        <textarea matInput class="text-area" [(ngModel)]="sendingMessage" placeholder="Type a new message" (keyup.shift)="toggleEnter(true)" (keydown.shift)="toggleEnter(false)" (keyup.enter)=enterSendMessage()></textarea>
+        <span matSuffix>
+            <button mat-icon-button class="icon-button" (click)="sendMessage()">
+                <mat-icon>send</mat-icon>
+            </button>
+        </span>
+    </mat-form-field>
+</div>

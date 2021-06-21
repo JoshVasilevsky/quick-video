@@ -6,6 +6,7 @@ import { SignallingMessage } from '../frontend/src/app/models/signallingMessage.
 
 io.on('connection', (socket: any) => {
     socket.on('join_room', (signallingMessage : SignallingMessage) => {
+        console.log(signallingMessage.roomId);
         socket.join(signallingMessage.roomId);
         socket.to(signallingMessage.roomId).emit('room_users', signallingMessage);
     })
@@ -19,7 +20,13 @@ io.on('connection', (socket: any) => {
     });
 
     socket.on('disconnect', () => {
-        io.emit('room_left', { type: 'disconnected', socketId: socket.id })
+        io.emit('room_left',  socket.id);
+        socket.disconnect();
+    })
+
+    socket.on('leave_room', () => {
+        io.emit('room_left', socket.id);
+        socket.disconnect();
     })
 });
 

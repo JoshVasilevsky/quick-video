@@ -17,6 +17,7 @@ export class RoomInputComponent{
   updateRoomURL(event: Event): void{
     const target = event.target as HTMLInputElement
     this.location.go(target.value);
+    this.roomSettings.roomId = target.value;
   }
   
   joinRoom():void{
