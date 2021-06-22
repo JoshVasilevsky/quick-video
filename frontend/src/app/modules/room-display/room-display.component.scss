@@ -1,12 +1,17 @@
 .background{
     background-color: #303030;
-    overflow: hidden;
 }
 
 .sidebar{
     background-color:#212121; 
-    width: 17.5%; 
+    width: 325px; 
     height: 100%;
+    z-index: 5;
+}
+
+.fix-width{
+    width: 100%;
+    height: calc(100% - 64px);
 }
 
 .videoLabel {
@@ -26,8 +31,26 @@
 }
 .videoView{
     height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 2fr; /* Create 2 columns and auto-place rows */
+    overflow-y: auto;
+}
+
+@media(max-width:1330px){
+   .center{
+       width: 500px;
+   }
+}
+
+.center{
+    padding-top: 30px;
+    margin: auto;
+    max-width: 1005px;
+}
+
+.videoGrid{
+    display: grid;  
+    grid-gap: 5px;  
+    grid-template-columns: repeat(auto-fit, 500px);
+    grid-template-rows: repeat(2, 400px);
 }
 
 .room-content{
@@ -36,5 +59,5 @@
 }
 
 .not-full-width{
-    width: 82.5%;
+    width: calc(100% - 325px);
 }

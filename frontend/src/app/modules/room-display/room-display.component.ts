@@ -22,6 +22,7 @@ export class RoomDisplayComponent implements OnInit {
   videos: VideoElement[] = [];
   messages: Message[] = [];
   unreadMessages: number = 0;
+  isConnected: boolean = false;
 
   currentUser: userPeer;
   userStream: MediaStream;
@@ -49,6 +50,7 @@ export class RoomDisplayComponent implements OnInit {
    
     this.signalingService.onConnect(() => {
       this.addUserVideo(this.signalingService.socketId, this.roomSettings.username, this.userStream, true);
+      this.isConnected = true;
       console.log(`Socket Id ${this.signalingService.socketId}`);
 
       this.currentUser = { 
@@ -80,7 +82,6 @@ export class RoomDisplayComponent implements OnInit {
       });
 
       this.signalingService.onRoomLeft(socketId => {
-        console.log('disco')
         this.handleUserLeave(socketId);
       })
     })
@@ -122,6 +123,7 @@ export class RoomDisplayComponent implements OnInit {
     if(socketId === this.signalingService.socketId){
       this.userStream.getTracks().forEach(track => track.stop());
       this.peers.forEach(peer => peer.peer.destroy());
+      this.isConnected = false;
     }
 
   }
@@ -157,11 +159,13 @@ export class RoomDisplayComponent implements OnInit {
 
   subscribeToDisconnectEventUpdate(){
     this.eventEmitterService.getDisconnectEvent().subscribe(()=>{
-      this.signalingService.leaveRoom();
-      //this.roomSettings.isSharingScreen = false;
-      this.roomSettings.isChatOpen = false;
-      this.roomSettings.isInCall = false;
-      this.eventEmitterService.emitJoinLeaveRoomEvent(this.roomSettings)
+      if(this.isConnected){
+        this.signalingService.leaveRoom();
+        //this.roomSettings.isSharingScreen = false;
+        this.roomSettings.isChatOpen = false;
+        this.roomSettings.isInCall = false;
+        this.eventEmitterService.emitJoinLeaveRoomEvent(this.roomSettings)
+      }
     });
   }
 
@@ -176,24 +180,30 @@ export class RoomDisplayComponent implements OnInit {
 
   subscribeToSendMessageEventUpdate(){
     this.eventEmitterService.getSendMessageEvent().subscribe((message: Message)=>{
-      this.messages.push(message);
-      this.peers.forEach(userPeer=>{
-        userPeer.peer.send(JSON.stringify(message));
-      })
+      if(this.isConnected){
+        this.messages.push(message);
+        this.peers.forEach(userPeer=>{
+          userPeer.peer.send(JSON.stringify(message));
+        })
+      }
     });
   }
 
   subscribeToToggleMicEventUpdate(){
     this.eventEmitterService.getToggleMicEvent().subscribe((isAudioEnabled: boolean)=>{
-      this.roomSettings.isAudioEnabled = isAudioEnabled;
-      this.userStream.getAudioTracks()[0].enabled = isAudioEnabled;
+      if(this.isConnected){
+        this.roomSettings.isAudioEnabled = isAudioEnabled;
+        this.userStream.getAudioTracks()[0].enabled = isAudioEnabled;
+      }
     });
   }
   
   subscribeToToggleCameraEventUpdate(){
     this.eventEmitterService.getToggleCameraEvent().subscribe((isVideoEnabled: boolean)=>{
-      this.roomSettings.isVideoEnabled = isVideoEnabled;
-      this.userStream.getVideoTracks()[0].enabled = isVideoEnabled;
+      if(this.isConnected){
+        this.roomSettings.isVideoEnabled = isVideoEnabled;
+        this.userStream.getVideoTracks()[0].enabled = isVideoEnabled;
+      }
     });
   }
 
