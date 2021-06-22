@@ -18,7 +18,6 @@
     color: white;
     background: rgba(0, 0, 0, 0.55);
     position: absolute;
-    margin-bottom: 5px;
     padding:6px;
     left: 0;
     bottom: 0;
@@ -26,8 +25,8 @@
 
 .videoContainer {
     position: relative;
-    width:max-content;
-    height:fit-content;
+    width: 500px;
+    height: 400px;
 }
 .videoView{
     height: 100%;

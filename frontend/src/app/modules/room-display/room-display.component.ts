@@ -51,6 +51,8 @@ export class RoomDisplayComponent implements OnInit {
     this.signalingService.onConnect(() => {
       this.addUserVideo(this.signalingService.socketId, this.roomSettings.username, this.userStream, true);
       this.isConnected = true;
+      this.setMic(this.roomSettings.isAudioEnabled);
+      this.setCamera(this.roomSettings.isVideoEnabled);
       console.log(`Socket Id ${this.signalingService.socketId}`);
 
       this.currentUser = { 
@@ -193,7 +195,7 @@ export class RoomDisplayComponent implements OnInit {
     this.eventEmitterService.getToggleMicEvent().subscribe((isAudioEnabled: boolean)=>{
       if(this.isConnected){
         this.roomSettings.isAudioEnabled = isAudioEnabled;
-        this.userStream.getAudioTracks()[0].enabled = isAudioEnabled;
+        this.setMic(isAudioEnabled);
       }
     });
   }
@@ -202,9 +204,17 @@ export class RoomDisplayComponent implements OnInit {
     this.eventEmitterService.getToggleCameraEvent().subscribe((isVideoEnabled: boolean)=>{
       if(this.isConnected){
         this.roomSettings.isVideoEnabled = isVideoEnabled;
-        this.userStream.getVideoTracks()[0].enabled = isVideoEnabled;
+        this.setCamera(isVideoEnabled);
       }
     });
+  }
+
+  setMic(isAudioEnabled){
+    this.userStream.getAudioTracks()[0].enabled = isAudioEnabled;
+  }
+
+  setCamera(isVideoEnabled){
+    this.userStream.getVideoTracks()[0].enabled = isVideoEnabled;
   }
 
   /* add later
