@@ -8,12 +8,13 @@ import { RoomSettings } from '../../models/room-settings.model';
   templateUrl: './room-input.component.html',
   styleUrls: ['./room-input.component.scss']
 })
+
 export class RoomInputComponent{
 
   @Input() roomSettings: RoomSettings;
 
   constructor(private location: Location, private eventEmitterService: EventEmitterService) {}
-   
+
   updateRoomURL(event: Event): void{
     const target = event.target as HTMLInputElement
     this.location.go(target.value);
@@ -21,7 +22,10 @@ export class RoomInputComponent{
   }
   
   joinRoom():void{
-    this.roomSettings.isInCall = true;
-    this.eventEmitterService.emitJoinLeaveRoomEvent(this.roomSettings)
+    if(!((!this.roomSettings.roomId.trim() || this.roomSettings.roomId.length > 25) && (!this.roomSettings.username.trim() || this.roomSettings.username.length > 25))){
+      this.roomSettings.isInCall = true;
+      this.eventEmitterService.emitJoinLeaveRoomEvent(this.roomSettings)
+    }
+   
   }
 }

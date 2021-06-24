@@ -1,34 +1,41 @@
 <mat-card class="create-room-card">
   <mat-card-content>
     <div class='flex-column'>
-      <mat-form-field class="input-box" appearance="fill">
-        <mat-label>Room ID</mat-label>
-        <input matInput type="text" [value]="roomSettings.roomId" placeholder="Ex. 1234" (keyup)="updateRoomURL($event)" onfocus="this.select()">
-        <span matSuffix>
-          <mat-icon>meeting_room</mat-icon>
-        </span>
-      </mat-form-field>
-      <mat-form-field class="input-box" appearance="fill">
-        <mat-label>Username</mat-label>
-        <input matInput [(ngModel)]="roomSettings.username" type="text" placeholder="Ex. John Smith" onfocus="this.select()">
-        <span matSuffix>
-          <mat-icon class="align-icon">account_circle</mat-icon>
-        </span>
-      </mat-form-field>
-      <div class="flex-row align-list">
-        <div class="flex-column">
-          <mat-label>Choose Media</mat-label>
-          <div>
-            <mat-slide-toggle color="primary" class="microphone-toggle" [(ngModel)]="roomSettings.isAudioEnabled">
-              <mat-icon class="align-toggle-icon" [innerHTML]="roomSettings.isAudioEnabled?'mic':'mic_off'"></mat-icon>
-            </mat-slide-toggle>
-            <mat-slide-toggle color="primary" class="camera-toggle" [(ngModel)]="roomSettings.isVideoEnabled">
-                <mat-icon class="align-toggle-icon" [innerHTML]="roomSettings.isVideoEnabled?'videocam':'videocam_off'"></mat-icon>
-            </mat-slide-toggle>
+        <label class="error-message" *ngIf="!roomSettings.roomId.trim() || roomSettings.roomId.length > 25">
+          Room Id must be between 1-25 characters
+        </label>
+        <mat-form-field class="input-box" appearance="fill">
+          <mat-label>Room ID</mat-label>
+          <input matInput type="text" [value]="roomSettings.roomId" placeholder="Ex. 1234" (keyup)="updateRoomURL($event)" onfocus="this.select()">
+          <span matSuffix>
+            <mat-icon>meeting_room</mat-icon>
+          </span>
+          <mat-error *ngIf="!hasRoomId">Room Id must be between 1-30 characters long!</mat-error>
+        </mat-form-field>
+        <label class="error-message" *ngIf="!roomSettings.username.trim() || roomSettings.username.length > 25">
+          Username must be between 1-25 characters
+        </label>
+        <mat-form-field class="input-box" appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput [(ngModel)]="roomSettings.username" type="text" placeholder="Ex. John Smith" onfocus="this.select()">
+          <span matSuffix>
+            <mat-icon class="align-icon">account_circle</mat-icon>
+          </span>
+        </mat-form-field>
+        <div class="flex-row align-list">
+          <div class="flex-column">
+            <mat-label>Choose Media</mat-label>
+            <div>
+              <mat-slide-toggle color="primary" class="microphone-toggle" [(ngModel)]="roomSettings.isAudioEnabled">
+                <mat-icon class="align-toggle-icon" [innerHTML]="roomSettings.isAudioEnabled?'mic':'mic_off'"></mat-icon>
+              </mat-slide-toggle>
+              <mat-slide-toggle color="primary" class="camera-toggle" [(ngModel)]="roomSettings.isVideoEnabled">
+                  <mat-icon class="align-toggle-icon" [innerHTML]="roomSettings.isVideoEnabled?'videocam':'videocam_off'"></mat-icon>
+              </mat-slide-toggle>
+            </div>
           </div>
+          <button mat-flat-button color="primary" class="join-button" (click)="joinRoom()"> <b>Join</b></button>
         </div>
-        <button mat-flat-button color="primary" class="join-button" (click)="joinRoom()"> <b>Join</b></button>
-      </div>
     </div>    
   </mat-card-content>
 </mat-card>
