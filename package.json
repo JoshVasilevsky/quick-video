@@ -1,0 +1,14 @@
+{
+    "name": "quick-video",
+    "version": "1.0.0",
+    "description": "",
+    "main": "signaling-server.js",
+    "scripts": {
+      "start": "cd server && npm install && npm run start"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {},
+    "devDependencies": {}
+  }
+  
