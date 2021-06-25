@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
         socket.disconnect();
     })
 });
-
+console.log(__dirname)
 app.use(express.static(path.join(__dirname, './frontend/dist/ng-video-app')));
 app.get('*', (req, res) =>{
     res.sendFile(path.join(__dirname, './frontend/dist/ng-video-app/index.html'))

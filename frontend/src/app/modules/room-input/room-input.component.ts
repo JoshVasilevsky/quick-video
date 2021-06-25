@@ -22,7 +22,7 @@ export class RoomInputComponent{
   }
   
   joinRoom():void{
-    if(!((!this.roomSettings.roomId.trim() || this.roomSettings.roomId.length > 25) && (!this.roomSettings.username.trim() || this.roomSettings.username.length > 25))){
+    if(!((!this.roomSettings.roomId.trim() || this.roomSettings.roomId.length > 25) || (!this.roomSettings.username.trim() || this.roomSettings.username.length > 25))){
       this.roomSettings.isInCall = true;
       this.eventEmitterService.emitJoinLeaveRoomEvent(this.roomSettings)
     }
