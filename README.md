@@ -2,7 +2,7 @@
 
 Room conferencing application using WebRTC and Angular. Allows users to voice and text chat when joining the same conference room. 
 
-#### Currently only supported in Chrome
+**Currently only supported in Chrome**
 
 ## Link
 Link: **[Access via Heroku](https://shelf-book-app.herokuapp.com/)**
