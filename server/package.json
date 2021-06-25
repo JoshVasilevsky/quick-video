@@ -7,6 +7,7 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "PROD=true npm run build && node ./dist/server/signalling-server",
+    "start:local": "npm run build && node ./dist/server/signalling-server",
     "postinstall": "cd ../frontend && npm install"
   },
   "author": "",

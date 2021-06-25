@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var app = require('express')();
+var path = require('path');
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
@@ -25,4 +26,10 @@ io.on('connection', function (socket) {
         socket.disconnect();
     });
 });
+if (process.env.PROD) {
+    app.use(app.static(path.join(__dirname, '../frontend/src')));
+    app.get('*', function (req, res) {
+        res.sendFild(path.join(__dirname, '../frontend/src/index.html'));
+    });
+}
 http.listen(port, function () { return console.log('listening on *:' + port); });
