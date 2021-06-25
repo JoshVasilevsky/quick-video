@@ -32,9 +32,9 @@ io.on('connection', (socket) => {
 });
 
 if(process.env.PROD){
-    app.use(express.static(path.join(__dirname, './frontend/dist')));
+    app.use(express.static(path.join(__dirname, './frontend/dist/ng-video-app')));
     app.get('*', (req, res) =>{
-        res.sendFild(path.join(__dirname, './frontend/dist/index.html'))
+        res.sendFile(path.join(__dirname, './frontend/dist/ng-video-app/index.html'))
     })
 }
 
