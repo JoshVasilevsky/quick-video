@@ -1,4 +1,5 @@
 var app = require('express')();
+var path = require('path');
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
@@ -29,5 +30,12 @@ io.on('connection', (socket: any) => {
         socket.disconnect();
     })
 });
+
+if(process.env.PROD){
+    app.use(app.static(path.join(__dirname, '../frontend/src')));
+    app.get('*', (req, res) =>{
+        res.sendFild(path.join(__dirname, '../frontend/src/index.html'))
+    })
+}
 
 http.listen(port, () => console.log('listening on *:' + port)); 
