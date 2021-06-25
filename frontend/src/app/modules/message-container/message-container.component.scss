@@ -13,8 +13,11 @@
     margin-left: 20%;
 }
 
-pre{
+.text{
     margin: 0px;
+    white-space: pre-wrap;
+    word-wrap: break-word;  
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .user-background{

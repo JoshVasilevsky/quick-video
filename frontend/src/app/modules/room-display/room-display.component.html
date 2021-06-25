@@ -6,7 +6,7 @@
             <div class="videoGrid">
                <ng-container *ngFor="let video of videos">
                   <div class="videoContainer"> 
-                     <video autoplay [id]="video.videoId" [srcObject]="video.srcObject" [muted]="video.muted"> </video>
+                     <video autoplay [id]="video.videoId" [srcObject]="video.srcObject" [muted]="video.muted" class="videoSize"> </video>
                      <label [innerHTML]="video.username" class="videoLabel"></label>
                   </div>
                </ng-container>
