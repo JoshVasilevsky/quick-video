@@ -6,8 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "PROD=true node signalling-server.js",
-    "start:local": "node signalling-server.js",
+    "start": "node signalling-server.js",
     "heroku-postbuild": "cd ./frontend && npm install"
   },
   "author": "",
@@ -16,6 +15,7 @@
     "@types/simple-peer": "^9.6.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "path": "^0.12.7",
     "simple-peer": "^9.11.0",
     "socket.io": "^4.1.2"
   }

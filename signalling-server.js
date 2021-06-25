@@ -31,11 +31,9 @@ io.on('connection', (socket) => {
     })
 });
 
-if(process.env.PROD){
-    app.use(express.static(path.join(__dirname, './frontend/dist/ng-video-app')));
-    app.get('*', (req, res) =>{
-        res.sendFile(path.join(__dirname, './frontend/dist/ng-video-app/index.html'))
-    })
-}
+app.use(express.static(path.join(__dirname, './frontend/dist/ng-video-app')));
+app.get('*', (req, res) =>{
+    res.sendFile(path.join(__dirname, './frontend/dist/ng-video-app/index.html'))
+})
 
 http.listen(port, () => console.log('listening on *:' + port)); 
