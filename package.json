@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "PROD=true node signalling-server.js",
     "start:local": "node signalling-server.js",
-    "postinstall": "cd ./frontend && npm install"
+    "heroku-postbuild": "cd ./frontend && npm install"
   },
   "author": "",
   "license": "ISC",

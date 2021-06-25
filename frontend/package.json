@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start:local": "ng serve",
+    "build:local": "ng build",
+    "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "postinstall": "npm run build"
+    "heroku-postbuild": "npm run build"
   },
   "private": true,
   "dependencies": {
