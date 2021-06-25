@@ -5,7 +5,7 @@ Room conferencing application using WebRTC and Angular. Allows users to voice an
 **Currently only supported in Chrome**
 
 ## Link
-Link: **[Access via Heroku](https://shelf-book-app.herokuapp.com/)**
+Link: **[Access via Heroku](https://https://ancient-ridge-66543.herokuapp.com//)**
 
 
 ### Join Room Page
