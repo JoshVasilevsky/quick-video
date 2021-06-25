@@ -32,9 +32,9 @@ io.on('connection', (socket) => {
 });
 
 if(process.env.PROD){
-    app.use(express.static(path.join(__dirname, './frontend/src')));
+    app.use(express.static(path.join(__dirname, './frontend/dist')));
     app.get('*', (req, res) =>{
-        res.sendFild(path.join(__dirname, './frontend/src/index.html'))
+        res.sendFild(path.join(__dirname, './frontend/dist/index.html'))
     })
 }
 
