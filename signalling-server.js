@@ -1,21 +1,21 @@
-var app = require('express')();
-var path = require('path');
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var port = process.env.PORT || 3000;
-import { SignallingMessage } from '../frontend/src/app/models/signallingMessage.model';
+const express = require("express");
+const app = express();
+const path = require('path');
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+const port = process.env.PORT || 3000;
 
-io.on('connection', (socket: any) => {
-    socket.on('join_room', (signallingMessage : SignallingMessage) => {
+io.on('connection', (socket) => {
+    socket.on('join_room', (signallingMessage) => {
         socket.join(signallingMessage.roomId);
         socket.to(signallingMessage.roomId).emit('room_users', signallingMessage);
     })
 
-    socket.on('offer_signal',  (signallingMessage : SignallingMessage) => {
+    socket.on('offer_signal',  (signallingMessage) => {
         io.to(signallingMessage.calleeId).emit('offer', signallingMessage);
     });
 
-    socket.on('answer_signal',  (signallingMessage : SignallingMessage) => {
+    socket.on('answer_signal',  (signallingMessage) => {
         io.to(signallingMessage.callerId).emit('answer', signallingMessage);
     });
 
@@ -32,9 +32,9 @@ io.on('connection', (socket: any) => {
 });
 
 if(process.env.PROD){
-    app.use(app.static(path.join(__dirname, '../frontend/src')));
+    app.use(express.static(path.join(__dirname, './frontend/src')));
     app.get('*', (req, res) =>{
-        res.sendFild(path.join(__dirname, '../frontend/src/index.html'))
+        res.sendFild(path.join(__dirname, './frontend/src/index.html'))
     })
 }
 
