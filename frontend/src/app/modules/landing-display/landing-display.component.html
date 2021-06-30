@@ -6,6 +6,7 @@
   </mat-toolbar>
   <div class='page-center'>
     <h1 class="landing-text">Join a Room to Start Chatting.</h1>
+    <h2 class="error-message" *ngIf="roomSettings.isError">Error Occured Joining Room. Mic and Camera are Required</h2>
     <room-input [roomSettings]="roomSettings"></room-input>
   </div>
 </div>

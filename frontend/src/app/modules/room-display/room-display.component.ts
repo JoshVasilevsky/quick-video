@@ -37,11 +37,16 @@ export class RoomDisplayComponent implements OnInit {
     this.subscribeToDisconnectEventUpdate()
    
     navigator.mediaDevices.getUserMedia({ audio: true, video: {width: 500, height:400} }).then(stream => {
+      this.roomSettings.isError = false;
       this.userStream = stream;
       this.handleStreamConnection(this.userStream);
     })
     .catch(err => {
       console.log(err)
+      this.roomSettings.isChatOpen = false;
+      this.roomSettings.isInCall = false;
+      this.roomSettings.isError = true;
+      this.eventEmitterService.emitJoinLeaveRoomEvent(this.roomSettings)
     });
   }
 

@@ -6,4 +6,5 @@ export class RoomSettings{
     isChatOpen: boolean = false;
     isSharingScreen: boolean = false;
     isInCall: boolean = false;
+    isError: boolean = false;
 }
