@@ -15,7 +15,7 @@ export class SignallingService {
   }
 
   connect() {
-    this.socket = io('https://bytevidio.herokuapp.com/',  { transports: ['websocket', 'polling', 'flashsocket'] })
+    this.socket = io('localhost:3000',  { transports: ['websocket', 'polling', 'flashsocket'] })
   }
 
   onConnect(fn: () => void) {

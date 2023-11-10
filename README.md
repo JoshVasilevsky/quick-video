@@ -5,7 +5,7 @@ Room conferencing application using WebRTC and Angular. Allows users to voice an
 **Currently only supported in Chrome**
 
 ## Link
-Link: **[Access via Heroku](https://bytevidio.herokuapp.com/)**
+Link: **[Access Here]()**
 
 
 ### Join Room Page
