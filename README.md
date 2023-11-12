@@ -5,7 +5,7 @@ Room conferencing application using WebRTC and Angular. Allows users to voice an
 **Currently only supported in Chrome**
 
 ## Link
-Link: **[Access Here]()**
+Link: **[Access Here](https://bytevideo.joshvasilevsky.com)**
 
 
 ### Join Room Page
