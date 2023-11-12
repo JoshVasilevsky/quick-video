@@ -15,7 +15,7 @@ export class SignallingService {
   }
 
   connect() {
-    this.socket = io('localhost:3000',  { transports: ['websocket', 'polling', 'flashsocket'] })
+    this.socket = io('https://bytevideo.joshvasilevsky.com',  { transports: ['websocket', 'polling', 'flashsocket'] })
   }
 
   onConnect(fn: () => void) {
